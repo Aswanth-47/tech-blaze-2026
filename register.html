@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Tech Blaze 3.0 Hackathon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="reg-page">
+
+    <!-- Sidebar -->
+    <aside class="reg-sidebar">
+      <div>
+        <div class="reg-sidebar-logo">
+          <div class="sidebar-logo-box">CE</div>
+          <span class="sidebar-brand-name">Computer Engineering</span>
+        </div>
+
+        <h1 class="reg-sidebar-title">
+          Tech Blaze<br><span class="grad">3.0</span>
+        </h1>
+        <p class="reg-sidebar-sub">
+          Register your team and secure your spot at the biggest hackathon of the year. 
+          Teams of up to 4 members welcome. All team members must provide their details.
+        </p>
+
+        <div class="reg-steps">
+          <div class="reg-step active">
+            <div class="step-num">1</div>
+            Team Information
+          </div>
+          <div class="reg-step">
+            <div class="step-num">2</div>
+            Team Members
+          </div>
+          <div class="reg-step">
+            <div class="step-num">3</div>
+            Health & Preferences
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>Questions? Reach out to the organising team.</p>
+        <p style="margin-top:4px;">© 2026 CE Department</p>
+      </div>
+    </aside>
+
+    <!-- Main Form Area -->
+    <main class="reg-main">
+      <div class="reg-main-header fade-up fade-up-1">
+        <h2 class="reg-main-title">Team Registration</h2>
+        <p class="reg-main-sub">Fields marked with <span class="asterisk">*</span> are required</p>
+      </div>
+
+      <form id="hackForm" action="register.php" method="POST" class="fade-up fade-up-2">
+
+        <!-- Team Details -->
+        <div class="form-section">
+          <div class="form-section-title">Step 1: Team Details</div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="team">Team Name *</label>
+              <input id="team" name="team" type="text" placeholder="e.g. ByteForce, NullPointers, CodeNinjas…" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="college">College / Institution *</label>
+              <input id="college" name="college" type="text" placeholder="Your college name" required>
+            </div>
+            <div class="form-group">
+              <label for="team_size">Team Size *</label>
+              <select id="team_size" name="team_size" required onchange="updateParticipantFields()">
+                <option value="">Select team size</option>
+                <option value="1">1 Member</option>
+                <option value="2">2 Members</option>
+                <option value="3">3 Members</option>
+                <option value="4">4 Members</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Participants Section -->
+        <div class="form-section">
+          <div class="form-section-title">Step 2: Team Members</div>
+          <p class="section-info">⚠️ Please provide complete details for all team members</p>
+
+          <!-- Participant 1 (Leader) -->
+          <div class="participant-card required-member">
+            <div class="participant-label">
+              Team Member 1 — Team Leader
+              <span class="p-required">Required</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group full">
+                <label>Full Name *</label>
+                <input name="p1" type="text" placeholder="Full name" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Mobile Number *</label>
+                <input name="p1_phone" type="tel" placeholder="10-digit mobile (6-9 start)" pattern="[6-9]\d{9}" required maxlength="10">
+              </div>
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input name="p1_email" type="email" placeholder="leader@email.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Food Preference *</label>
+                <select name="p1_food" required>
+                  <option value="">Select option</option>
+                  <option value="Vegetarian">🥦 Vegetarian</option>
+                  <option value="Non-Vegetarian">🍗 Non-Vegetarian</option>
+                  
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Participant 2 -->
+          <div class="participant-card optional-member" style="display:none;">
+            <div class="participant-label">
+              Team Member 2
+              <span class="p-optional">Optional</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group full">
+                <label>Full Name</label>
+                <input name="p2" type="text" placeholder="Full name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Mobile Number</label>
+                <input name="p2_phone" type="tel" placeholder="10-digit mobile" pattern="[6-9]\d{9}" maxlength="10">
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input name="p2_email" type="email" placeholder="member2@email.com">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Food Preference</label>
+                <select name="p2_food">
+                  <option value="">Select option</option>
+                  <option value="Vegetarian">🥦 Vegetarian</option>
+                  <option value="Non-Vegetarian">🍗 Non-Vegetarian</option>
+                  <option value="Vegan">🌱 Vegan</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Participant 3 -->
+          <div class="participant-card optional-member" style="display:none;">
+            <div class="participant-label">
+              Team Member 3
+              <span class="p-optional">Optional</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group full">
+                <label>Full Name</label>
+                <input name="p3" type="text" placeholder="Full name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Mobile Number</label>
+                <input name="p3_phone" type="tel" placeholder="10-digit mobile" pattern="[6-9]\d{9}" maxlength="10">
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input name="p3_email" type="email" placeholder="member3@email.com">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Food Preference</label>
+                <select name="p3_food">
+                  <option value="">Select option</option>
+                  <option value="Vegetarian">🥦 Vegetarian</option>
+                  <option value="Non-Vegetarian">🍗 Non-Vegetarian</option>
+                  <option value="Vegan">🌱 Vegan</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Participant 4 -->
+          <div class="participant-card optional-member" style="display:none;">
+            <div class="participant-label">
+              Team Member 4
+              <span class="p-optional">Optional</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group full">
+                <label>Full Name</label>
+                <input name="p4" type="text" placeholder="Full name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Mobile Number</label>
+                <input name="p4_phone" type="tel" placeholder="10-digit mobile" pattern="[6-9]\d{9}" maxlength="10">
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input name="p4_email" type="email" placeholder="member4@email.com">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Food Preference</label>
+                <select name="p4_food">
+                  <option value="">Select option</option>
+                  <option value="Vegetarian">🥦 Vegetarian</option>
+                  <option value="Non-Vegetarian">🍗 Non-Vegetarian</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medical & Accessibility -->
+        <div class="form-section">
+          <div class="form-section-title">Step 3: Health & Accessibility</div>
+          <div class="form-group full">
+            <label for="medical">Medical Conditions or Accessibility Needs</label>
+            <textarea id="medical" name="medical" placeholder="Let us know if any team member has allergies, medical conditions, dietary restrictions, or accessibility requirements we should be aware of…"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Registration →</button>
+        <p class="form-note">By submitting, you agree to the event terms & code of conduct.</p>
+
+      </form>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
